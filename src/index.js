@@ -5,7 +5,7 @@ import './style.scss';
 // const $ = require('jquery');
 
 const App = () => {
-  return <div className="test">All the React are belong to us!</div>;
+  return <div className="test">All the React belongs to us!</div>;
 };
 
 ReactDOM.render(<App />, document.getElementById('main'));
