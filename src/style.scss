@@ -1,14 +1,132 @@
+$button-color:  #aaf0d1;
+$border-color: black;
+//$logo-color: #C06958;
+$logo-color: #E01A4F;
+$background: #F3DFC1;
+$accent-1: #1C75BC;
+$accent-2: #280160;
+
+
 body, html {
-  font-family: "Roboto", sans-serif;
-  background: linear-gradient(to bottom, #87e0fd 0%,#53cbf1 40%,#05abe0 100%);
+  font-family: "Roboto", slab;
+  background: linear-gradient(to bottom, #FFFFFF 0%, $background 100%);
   height: 100%;
+  color: $logo-color;
+}
+
+// .logo {
+//   background-image: url('img/Sharity_Logo.png');
+//   width: 100px;
+//   height: 100px;
+//   background-repeat: no-repeat;
+//   background-size: contain;
+// }
+
+#logo_bird {
+  font-size: 50pt;
+  color: $logo-color;
+  // box-shadow: 1pt 1pt 1pt;
+  margin: 0;
+  margin-right: 4pt;
+  letter-spacing: -1px;
 }
 
 .logo {
-  background-image: url('img/Sharity_Logo.png');
-  width: 100px;
-  height: 100px;
-  background-repeat: no-repeat;
-  background-size: contain; 
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5%;
+  margin-top:  0;
+  color: $logo-color;
+}
 
+.logo-text {
+  margin: 0;
+  display:  flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-life {
+  font-size: 20pt;
+  margin: 0;
+  font-family: 'Galada', cursive;
+}
+
+.logo-slogan {
+  font-size: 12pt;
+  margin: 0;
+  font-family: 'IM Fell English SC', serif;
+}
+.note {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 5px 10px 10px grey;
+  border: 3pt;
+  margin: 5%;
+  padding: 2pt 10pt 2pt 10pt;
+  background-color: white;
+  width: auto;
+}
+
+.note-header {
+  display: flex;
+  flex-direction: row;
+  border-bottom-style: solid;
+  border-bottom-color: grey;
+  border-bottom-width: thin;
+}
+
+i {
+  margin: 6pt;
+}
+
+#notes-section {
+  display: flex;
+  width: 90%;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.addnote {
+  border-top: 3pt solid $accent-1;
+  border-bottom: 3pt solid $accent-1;
+  border-radius: 10pt;
+  padding: 3% 3% 3% 3%;
+  color: $accent-1;
+}
+
+input {
+  margin: 2%;
+}
+
+textarea {
+  margin: 2%;
+  border-style: solid;
+  border-width: 0 0 1px 0;
+  border-color: $accent-1;
+  background-color: inherit;
+  font-size: 12pt;
+  color: $accent-2;
+}
+
+textarea::placeholder {
+  color: $button-color;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.save-button {
+  border: solid;
+  border-width: 1pt;
+  border-radius: 20%;
+  background-color: $button-color;
+  color: $logo-color;
+}
+
+.save-button:hover {
+  background-color: darken($button-color, 10%);
 }

@@ -20,27 +20,31 @@ class AddNote extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className="addnote">
-          Title:
-        <input
-          type="text"
-          id="titleinput"
-          name="newTitle"
-          placeholder="Add a new note!"
-          value={this.props.title}
-          onChange={this.handleChange}
-        />
-        Note:
-        <input
-          type="text"
-          id="noteinput"
-          name="newContent"
-          placeholder="What do you need to do?"
-          value={this.props.content}
-          onChange={this.handleChange}
-        />
-        <input type="submit" value="Submit" />
-      </form>
+      <div className="addnote-for-border">
+        <form onSubmit={this.handleSubmit} className="addnote">
+          <div>Title:</div>
+          <textarea
+            type="text"
+            id="titleinput"
+            name="newTitle"
+            placeholder="Add a new note!"
+            value={this.props.title}
+            onChange={this.handleChange}
+          />
+          <div>Note:</div>
+          <textarea
+            type="text"
+            id="noteinput"
+            name="newContent"
+            placeholder="What do you need to do?"
+            value={this.props.content}
+            onChange={this.handleChange}
+          />
+          <button className="save-button" type="submit" value="Submit">
+            <i className="fas fa-save" />
+          </button>
+        </form>
+      </div>
     );
   }
 }
