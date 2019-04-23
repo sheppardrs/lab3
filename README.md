@@ -26,3 +26,5 @@ Check what url you are deploying to in ```package.json``` under ```scripts``` ``
 ```yarn deploy``` 
 to publish to surge. 
 
+# Sources 
+I mainly relied on the class assignment for this, but also the documentation of the libraries added like immutable js and react-draggable. I did do most of this assignment before on my own repo, so the classroom one only has the recent commits. I also consulted with Regina Yan on the assignment generalities. Naturally, the standard stackoverflow, w3schools, and so on were used. 
