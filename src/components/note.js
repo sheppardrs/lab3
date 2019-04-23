@@ -17,18 +17,9 @@ class Note extends React.Component {
   }
 
   handleDrag(e, ui) {
-    // const { x, y } = this.state.deltaPosition;
-    // this.setState({
-    //   deltaPosition: {
-    //     x: x + ui.deltaX,
-    //     y: y + ui.deltaY,
-    //   },
-    // });
-    const { x, y } = this.position;
-    this.position.x = x + ui.deltaX;
-    this.position.y = y + ui.deltaY;
-    console.log('hi we moving!');
-    this.props.handlePosChange(this.props.id, this.position);
+    const newPos = { x: this.props.note.x + ui.deltaX, y: this.props.note.y + ui.deltaY };
+    console.log('hi we moving!', newPos, this.props.id);
+    this.props.handlePosChange(this.props.id, newPos);
   }
 
   handleDelete() {
@@ -53,33 +44,68 @@ class Note extends React.Component {
   renderNote() {
     if (this.state.isEditing) {
       return (
-        <form onSubmit={this.handleSubmit} className="editnote">
-          <textarea
-            type="text"
-            id="edittitle"
-            name="editTitle"
-            placeholder="Add a new note!"
-            value={this.props.editingTitle}
-            onChange={this.handleChange}
-          />
-          <textarea
-            type="text"
-            id="editcontent"
-            name="editContent"
-            placeholder="What do you need to do?"
-            value={this.props.editingContent}
-            onChange={this.handleChange}
-          />
-          <button className="save-button" type="submit" value="Submit">
-            <i className="fas fa-save" />
-          </button>
-        </form>
+        <Draggable
+          grid={[25, 25]}
+          defaultPosition={{ x: this.props.note.x, y: this.props.note.y }}
+          onDrag={this.handleDrag}
+        >
+          <form onSubmit={this.handleSubmit}>
+            <div className="note">
+              <div className="note-header">
+                <textarea
+                  type="text"
+                  id="edittitle"
+                  name="editTitle"
+                  placeholder="Add a new note!"
+                  value={this.props.editingTitle}
+                  onChange={this.handleChange}
+                />
+                <button className="save-button" type="submit" value="Submit">
+                  <i className="fas fa-save" />
+                </button>
+              </div>
+              <div className="noteBody">
+                <textarea
+                  type="text"
+                  id="editcontent"
+                  name="editContent"
+                  placeholder="What do you need to do?"
+                  value={this.props.editingContent}
+                  onChange={this.handleChange}
+                />
+              </div>
+            </div>
+          </form>
+        </Draggable>
       );
+      // return (
+      //   <form onSubmit={this.handleSubmit} className="editnote">
+      //     <textarea
+      //       type="text"
+      //       id="edittitle"
+      //       name="editTitle"
+      //       placeholder="Add a new note!"
+      //       value={this.props.editingTitle}
+      //       onChange={this.handleChange}
+      //     />
+      //     <textarea
+      //       type="text"
+      //       id="editcontent"
+      //       name="editContent"
+      //       placeholder="What do you need to do?"
+      //       value={this.props.editingContent}
+      //       onChange={this.handleChange}
+      //     />
+      //     <button className="save-button" type="submit" value="Submit">
+      //       <i className="fas fa-save" />
+      //     </button>
+      //   </form>
+      // );
     } else {
       return (
         <Draggable
           grid={[25, 25]}
-          defaulPosition={this.position}
+          defaultPosition={{ x: this.props.note.x, y: this.props.note.y }}
           onDrag={this.handleDrag}
         >
           <div className="note">

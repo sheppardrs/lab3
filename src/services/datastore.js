@@ -18,6 +18,7 @@ const db = firebase.database();
 export function fetchNotes(callback) {
   db.ref('notes').on('value', (snapshot) => {
     const newNotesState = snapshot.val();
+    console.log(newNotesState);
     callback(newNotesState);
   });
 }
@@ -35,5 +36,6 @@ export function updateNote(id, newTitle, newContent) {
 }
 
 export function updateNoteLoc(id, pos) {
+  console.log('updating position', pos);
   db.ref('notes').child(id).update({ x: pos.x, y: pos.y });
 }
