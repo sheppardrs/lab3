@@ -35,6 +35,7 @@ class App extends Component {
       newContent: '',
       editTitle: '',
       editContent: '',
+      board: 1,
     };
     this.id = 0;
 
@@ -165,20 +166,22 @@ class App extends Component {
         </div>
         <div id="notes-section">
           {this.state.notes.entrySeq().map(([id, note]) => {
-            return (
-              <div key={id}>
-                <Note key={id}
-                  id={id}
-                  note={note}
-                  handlePosChange={db.updateNoteLoc}
-                  handleNoteDelete={this.deleteNote}
-                  handleNoteChange={this.handleNoteChange}
-                  handleNoteSubmit={this.saveNote}
-                  handleEdit={this.handleEdit}
-                  editingTitle={this.state.editTitle}
-                  editingContent={this.state.editContent}
-                />
-              </div>);
+            if (this.state.board === note.board) {
+              return (
+                <div key={id}>
+                  <Note key={id}
+                    id={id}
+                    note={note}
+                    handlePosChange={db.updateNoteLoc}
+                    handleNoteDelete={this.deleteNote}
+                    handleNoteChange={this.handleNoteChange}
+                    handleNoteSubmit={this.saveNote}
+                    handleEdit={this.handleEdit}
+                    editingTitle={this.state.editTitle}
+                    editingContent={this.state.editContent}
+                  />
+                </div>);
+            } else { console.log('wrong board'); return (''); }
           })}
         </div>
       </div>
